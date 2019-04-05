@@ -18,5 +18,5 @@ Modify `container.config` if you need non-default configuration.
 To create a container, execute the following script:
 
 ```bash
-./create_container.sh
+./create.sh
 ```
