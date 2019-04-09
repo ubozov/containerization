@@ -3,12 +3,18 @@ RED="\033[1;31m"
 GREEN="\033[1;32m"
 NOCOLOR="\033[0m"
 
-. ./container.config
+if [ -n "$1" ]
+then
+    source ./yaml.sh
+	create_variables $1
+else
+	. ./container.config
+fi
 
 container=${CONTAINER_NAME:-test-container}
-version=${VERSION:-stretch}
-password=${PASSWORD:-p0S1w2D3}
-archive=${TAR:-on}
+version=${CONTAINER_VERSION:-stretch}
+password=${CONTAINER_PASSWORD:-p0S1w2D3}
+archive=${CONTAINER_TAR:-on}
 
 echo "Container name:" ${container}
 echo "Debian version:" ${version}
