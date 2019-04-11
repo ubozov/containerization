@@ -20,6 +20,10 @@ echo "Container name:" ${container}
 echo "Debian version:" ${version}
 echo "Container root password:" ${password}
 echo "Container archiving status:" ${archive}
+for i in "${PACKAGES__NAME[@]}" 
+do 
+    packages+=$(printf '%s' "echo ${i} && apt install -y ${i}")$'\n'
+done
 
 # create container
 sudo debootstrap ${version} ./${container} http://deb.debian.org/debian
@@ -43,6 +47,9 @@ apt install -y locales
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 update-locale LANG=en_US.UTF-8
+
+# install packages
+$packages
 
 rm -rf /usr/share/doc/*
 find /usr/share/locale -maxdepth 1 -mindepth 1 ! -name en_US -exec rm -rf {} \;

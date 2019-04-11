@@ -4,3 +4,11 @@ CONTAINER:
   VERSION: stretch #container OS debian version
   PASSWORD: p0S1w2D3 #container OS root password
   TAR: on #container archivied status (on or off)
+
+# package list for installation
+PACKAGES:
+  -
+    NAME: openvpn
+  -
+    NAME: git
+
