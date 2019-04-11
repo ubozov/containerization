@@ -33,12 +33,12 @@ echo -e "$password\n$password\n" | passwd
 echo "pts/0" >> /etc/securetty
 echo deb http://deb.debian.org/debian $version-backports main > /etc/apt/sources.list.d/$version-backports.list
 
-apt-get update
-apt-get -t $version-backports install -y systemd
-apt-get install -y dbus net-tools
+apt update
+apt -t $version-backports install -y systemd
+apt install -y dbus net-tools
 
 # install locale
-apt-get install -y locales
+apt install -y locales
 
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
